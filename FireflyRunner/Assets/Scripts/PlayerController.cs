@@ -6,22 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private Animator playerAnim;
-    private AudioSource playerAudio;
-    public ParticleSystem explosionParticle;
-    public ParticleSystem dirtParticle;
-    public AudioClip jumpSound;
-    public AudioClip crashSound;
     public float jumpForce = 10;
-    public float gravityModifier;
+    public float gravityModifier =1.5f;
     public bool isOnGround = true;
     public bool gameOver;
+    private bool doubleJump = true;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
-        playerAudio = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
     }
 
@@ -31,11 +26,15 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
-            playerRb.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            dirtParticle.Stop();
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            Debug.Log("Player jumped.");
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && !isOnGround && doubleJump && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            doubleJump = false;
+            Debug.Log("Player double jumped.");
         }
 
     }
@@ -43,17 +42,13 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
+            Debug.Log("Collision with ground detected.");
             isOnGround = true;
-            dirtParticle.Play();
+            doubleJump = true;
         } else if(collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Game Over");
-            playerAnim.SetBool("Death_b", true);
-            playerAnim.SetInteger("DeathType_int", 1);
+            Debug.Log("Collision with obstacle detected. The game is over.");
             gameOver = true;
-            explosionParticle.Play();
-            dirtParticle.Stop();
-            playerAudio.PlayOneShot(crashSound, 1.0f);
         }
     }
 }
