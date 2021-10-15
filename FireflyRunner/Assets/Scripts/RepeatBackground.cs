@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class RepeatBackground : MonoBehaviour
 {
-    private Vector3 startPos;
-    private float repeatWidth;
+    public float speed = 0.5f;
+    private Renderer r;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
-        repeatWidth = GetComponent<BoxCollider>().size.x;
+        r = GetComponent<Renderer>(); //r is a reference to the renderer 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < startPos.x - repeatWidth)
-        {
-            transform.position = startPos;
-        }
+        Vector2 offset = new Vector2(Time.time * speed, 0);
+        r.material.mainTextureOffset = offset;   //offset material of object
     }
 }

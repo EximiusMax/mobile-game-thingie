@@ -24,14 +24,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        if (Input.GetMouseButtonDown(0) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             Debug.Log("Player jumped.");
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && !isOnGround && doubleJump && !gameOver)
+        else if (Input.GetMouseButtonDown(0) && !isOnGround && doubleJump && !gameOver)
         {
+
+            playerRb.velocity = new Vector3(playerRb.velocity.y, 0f);
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             doubleJump = false;
             Debug.Log("Player double jumped.");
