@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 309305344}
   - component: {fileID: 309305343}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: BackgroundDemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 337457017}
   - component: {fileID: 337457016}
   m_Layer: 0
-  m_Name: Player Stand-in
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,4 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb527ea504d278e438054234bc40e607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 8984218971867633797, guid: 29e8637836aadd84cba2ca416c26aa8c, type: 3}
+  obstaclePrefab:
+  - {fileID: 8984218971867633797, guid: 29e8637836aadd84cba2ca416c26aa8c, type: 3}
+  - {fileID: 8984218971867633797, guid: 29e8637836aadd84cba2ca416c26aa8c, type: 3}
