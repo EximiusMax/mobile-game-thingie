@@ -14,4 +14,9 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("Title");
     }
+
+    public void GoToCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

@@ -7,17 +7,24 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private Animator playerAnim;
     public float jumpForce = 10;
-    public float gravityModifier =1.5f;
+    public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver;
     private bool doubleJump = true;
+    public GameObject gameOverBanner;
+    private static Vector3 grav;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
-        Physics.gravity *= gravityModifier;
+        if (Physics.gravity != grav)
+        {
+            Physics.gravity *= gravityModifier;
+            grav = Physics.gravity;
+            Debug.Log(Physics.gravity);
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
-            Debug.Log("Player jumped.");
+            Debug.Log("JUMP");
         }
         else if (Input.GetMouseButtonDown(0) && !isOnGround && doubleJump && !gameOver)
         {
@@ -36,7 +43,7 @@ public class PlayerController : MonoBehaviour
             playerRb.velocity = new Vector3(playerRb.velocity.y, 0f);
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             doubleJump = false;
-            Debug.Log("Player double jumped.");
+            Debug.Log("DOUBLE JUMP");
         }
 
     }
@@ -44,13 +51,15 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Collision with ground detected.");
             isOnGround = true;
             doubleJump = true;
-        } else if(collision.gameObject.CompareTag("Obstacle"))
+        }
+        else if(collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Collision with obstacle detected. The game is over.");
+            Debug.Log("GAME OVER");
             gameOver = true;
+            gameOverBanner.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
