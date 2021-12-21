@@ -31,13 +31,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && isOnGround && !gameOver)
+        if (Input.GetKeyDown("space") && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+            playerAnim.SetBool("Grounded", false);
             Debug.Log("JUMP");
         }
-        else if (Input.GetMouseButtonDown(0) && !isOnGround && doubleJump && !gameOver)
+        else if (Input.GetKeyDown("space") && !isOnGround && doubleJump && !gameOver)
         {
 
             playerRb.velocity = new Vector3(playerRb.velocity.y, 0f);
@@ -45,14 +46,31 @@ public class PlayerController : MonoBehaviour
             doubleJump = false;
             Debug.Log("DOUBLE JUMP");
         }
+        
+        if (Input.GetKeyDown("up") && isOnGround && !gameOver)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
+            playerAnim.SetBool("Grounded", false);
+            Debug.Log("JUMP");
+        }
+        else if (Input.GetKeyDown("up") && !isOnGround && doubleJump && !gameOver)
+        {
 
+            playerRb.velocity = new Vector3(playerRb.velocity.y, 0f);
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            doubleJump = false;
+            Debug.Log("DOUBLE JUMP");
+        }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
             doubleJump = true;
+            playerAnim.SetBool("Grounded", true);
         }
         else if(collision.gameObject.CompareTag("Obstacle"))
         {

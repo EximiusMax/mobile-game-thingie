@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
+    public GameObject controlScreen;
+
     public void GoToGame()
     {
         SceneManager.LoadScene("Game");
@@ -15,8 +18,12 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
-    public void GoToCredits()
+    public void ShowControls()
     {
-        SceneManager.LoadScene("Credits");
+        controlScreen.SetActive(true);
+    }
+    public void HideControls()
+    {
+        controlScreen.SetActive(false);
     }
 }

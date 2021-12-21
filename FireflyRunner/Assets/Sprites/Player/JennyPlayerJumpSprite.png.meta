@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 56bbeb3244299ce4bb773e9ae9f25131
+guid: b0d0f83ff5b0a78499231042b2440a2b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 237291096230815415
-    second: Jenny Spritesheet_0
+      213: 930762581722780974
+    second: JennyPlayerJumpSprite_0
   - first:
-      213: 433241626466915009
-    second: Jenny Spritesheet_1
-  - first:
-      213: -3284222304116250804
-    second: Jenny Spritesheet_2
-  - first:
-      213: 6560628284061666975
-    second: Jenny Spritesheet_3
+      213: 9145726212485211091
+    second: JennyPlayerJumpSprite_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,54 +133,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jenny Spritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 42
-        width: 24
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b6633baef60b4300800000000000000
-      internalID: 237291096230815415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jenny Spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 42
-        width: 24
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c2197fb6fe230600800000000000000
-      internalID: 433241626466915009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jenny Spritesheet_2
+      name: JennyPlayerJumpSprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
+        width: 26
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,19 +147,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c476cb707391c62d0800000000000000
-      internalID: -3284222304116250804
+      spriteID: e25dfcdf2abbaec00800000000000000
+      internalID: 930762581722780974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jenny Spritesheet_3
+      name: JennyPlayerJumpSprite_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 26
         y: 0
-        width: 24
+        width: 26
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9e40e62aa80c0b50800000000000000
-      internalID: 6560628284061666975
+      spriteID: 3d3e82cb8852cee70800000000000000
+      internalID: 9145726212485211091
       vertices: []
       indices: 
       edges: []
